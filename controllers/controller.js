@@ -3,7 +3,13 @@ class Controller{
     static home (req, res) {
     // res.send('Hello World!')
     // res.render(`home`)
-    Feed.findAll()
+    User.findAll({
+        include: [
+            {
+                model: Feed
+            }
+        ]
+    })
         .then(data => {
             res.send(data)
         })

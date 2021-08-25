@@ -11,12 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      FeedUser.belongsTo(models.Feed , {foreignKey: `FeedID`})
+      // FeedUser.belongsTo(models.Feed , {foreignKey: `FeedID`})
+      // FeedUser.belongsTo(models.User , {foreignKey: `UserID`})
     }
   };
   FeedUser.init({
-    FeedID: DataTypes.INTEGER,
-    UserID: DataTypes.INTEGER
+    feedID: DataTypes.INTEGER,
+    userID: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'FeedUser',
