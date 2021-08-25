@@ -1,34 +1,34 @@
 [
     {
         "profile_picture": "avatar-link",
-        "username": "test-username",
+        "username": "test-username1",
         "password": "testing-Password",
-        "first_name": "test first",
-        "last_name": "test last",
-        "email": "testing@mail.com"
+        "first_name": "test1 first",
+        "last_name": "test1 last",
+        "email": "testing1@mail.com"
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username",
+        "username": "test-username2",
         "password": "testing-Password",
-        "first_name": "test first",
-        "last_name": "test last",
-        "email": "testing@mail.com"
+        "first_name": "test2 first",
+        "last_name": "test2 last",
+        "email": "testing2@mail.com"
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username",
+        "username": "test-username3",
         "password": "testing-Password",
-        "first_name": "test first",
-        "last_name": "test last",
-        "email": "testing@mail.com"
+        "first_name": "test3 first",
+        "last_name": "test3 last",
+        "email": "testing3@mail.com"
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username",
+        "username": "test-username4",
         "password": "testing-Password",
-        "first_name": "test first",
-        "last_name": "test last",
-        "email": "testing@mail.com"
+        "first_name": "test4 first",
+        "last_name": "test4 last",
+        "email": "testing4@mail.com"
     }
 ]
