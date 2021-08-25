@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Feed.hasMany(models.FeedUser , {foreignKey: feedID})
+      Feed.hasMany(models.FeedUser , {foreignKey: `FeedID`})
     }
   };
   Feed.init({
