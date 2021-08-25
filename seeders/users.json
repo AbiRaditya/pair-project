@@ -1,0 +1,34 @@
+[
+    {
+        "profile_picture": "avatar-link",
+        "username": "test-username",
+        "password": "testing-Password",
+        "first_name": "test first",
+        "last_name": "test last",
+        "email": "testing@mail.com"
+    },
+    {
+        "profile_picture": "avatar-link",
+        "username": "test-username",
+        "password": "testing-Password",
+        "first_name": "test first",
+        "last_name": "test last",
+        "email": "testing@mail.com"
+    },
+    {
+        "profile_picture": "avatar-link",
+        "username": "test-username",
+        "password": "testing-Password",
+        "first_name": "test first",
+        "last_name": "test last",
+        "email": "testing@mail.com"
+    },
+    {
+        "profile_picture": "avatar-link",
+        "username": "test-username",
+        "password": "testing-Password",
+        "first_name": "test first",
+        "last_name": "test last",
+        "email": "testing@mail.com"
+    }
+]
