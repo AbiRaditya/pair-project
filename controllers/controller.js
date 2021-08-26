@@ -1,9 +1,13 @@
-const {Feed , User , Tag , FeedTag , FeedUser } = require(`../models`)
+const {Feed , User , Tag , FeedTag  } = require(`../models`)
 class Controller{
     static home (req, res) {
-    // res.send('Hello World!')
+    res.send('Hello World!')
     // res.render(`home`)
-    User.findAll({
+    
+
+    }
+    static getFeed(req,res){
+        User.findAll({
         include: [
             {
                 model: Feed
@@ -11,12 +15,12 @@ class Controller{
         ]
     })
         .then(data => {
-            res.send(data)
+            // res.send(data)
+            res.render(`feeds` , {data})
         })
         .catch(err => {
             res.send(err)
         })
-
     }
 }
 module.exports = Controller

@@ -1,0 +1,19 @@
+<div>
+    <% data.forEach(element=> { %>
+        <h4>
+            <%= element.username %>
+        </h4>
+        <% element.Feeds.forEach(e=> { %>
+            <div>
+
+                <p>
+                    <%= e.title %>
+                </p>
+                <p>
+                    <%= e.content %>
+                </p>
+            </div>
+
+            <% }); %>
+                <% }); %>
+</div>
