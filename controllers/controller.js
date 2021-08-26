@@ -134,5 +134,57 @@ class Controller{
                 res.send(err)
             })
     }
+    static getSearchTags(req,res){
+        // res.send(`ini search tags`)
+        res.render(`searchtag` , {title: `Search post By Tag`})
+    }
+    static postSearchTags(req,res){
+        // console.log(req.body.tag.slice(1));
+        let userN = []
+        let tagFind = req.body.tag.slice(1)
+        let feedByTags 
+        let ftData = []
+        Tag.findAll({
+            include: Feed,
+            where: {
+                name:tagFind
+            }
+        })
+            .then(data => {
+                // ftData = data
+                // res.send(data)
+                // res.render(`feedbytag` , {data , title:`Feed By Tag`})
+                feedByTags = data
+                data[0].Feeds.forEach(element => {
+                    ftData.push(element.user_id)
+                });
+                console.log(ftData);
+                return User.findAll({
+                    where:{
+                        id:ftData
+                    }
+                })
+
+            })
+            .then(data => {
+                // res.send(data)
+                data.forEach(el => {
+                    userN.push(
+                        {
+                            user_id: el.id,
+                            username: el.username
+                        }
+                    )
+                });
+                // res.send(userN)
+                res.render(`feedbytag` , { feedByTags , userN , title: `Feed By Tags`})
+
+
+            })
+            .catch(err => {
+                res.send(err)
+            })
+
+    }
 }
 module.exports = Controller
