@@ -1,34 +1,49 @@
-<div>
-    <form action="/feeds" method="POST">
-        <h3>input user id untuk test add feed</h3>
-        <h3>apabila di release yang akan datang fitur login dan register udah bisa</h3>
-        <h3>gak perlu masukin user id</h3>
-        <label for="id">User Id:</label>
-        <input type="text" id="id" name="id"><br><br>
-        <label for="title">title:</label>
-        <input type="text" id="title" name="title"><br><br>
-        <label for="content">content:</label>
-        <input type="text" id="content" name="content"><br><br>
-        <input type="submit" value="Submit">
-    </form>
-</div>
-
-<div>
-    <% data.forEach(element=> { %>
-        <h4>
-            <%= element.username %>
-        </h4>
-        <% element.Feeds.forEach(e=> { %>
-            <div>
-
-                <p>
-                    <%= e.title %>
-                </p>
-                <p>
-                    <%= e.content %>
-                </p>
+<%- include(`partials/header`) %>
+    <h3>input user id untuk test add feed</h3>
+    <h3>apabila di release yang akan datang fitur login dan register udah bisa</h3>
+    <h3>gak perlu masukin user id</h3>
+    <div id="formFeed">
+        <form action="/feeds" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">user id</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user id" name="id">
             </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">title</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">content</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="content"
+                    name="content"></textarea>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
-            <% }); %>
+    <div class="box">
+        <% data.forEach(element=> { %>
+            <h4>
+                <%= element.username %>
+            </h4>
+            <% element.Feeds.forEach(e=> { %>
+                <div>
+
+                    <p class="para">
+                        <%= e.title %>
+                    </p>
+                    <p>
+                        <%= e.content %>
+                    </p>
+                </div>
+
                 <% }); %>
-</div>
+                    <% }); %>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <%- include(`partials/footer`) %>

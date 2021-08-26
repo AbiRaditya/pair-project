@@ -24,7 +24,21 @@ class Controller{
     }
     static postFeed(req,res) {
         // res.send(req.body)
-        console.log(req.body);
+        // console.log(req.body);
+        let newFeed = {
+            user_id: req.body.id,
+            title: req.body.title,
+            content: req.body.content,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }
+        Feed.create(newFeed)
+            .then(data => {
+                res.redirect(`/feeds`)
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
 }
 module.exports = Controller
