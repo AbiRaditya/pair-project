@@ -1,0 +1,12 @@
+<%- include(`partials/header`) %>
+    <div id="formFeed">
+        <form action="/feeds/search/tags" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Search by Tag</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g #pet "
+                    name="tag">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <%- include(`partials/footer`) %>

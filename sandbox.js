@@ -35,10 +35,14 @@
 /**
  * Filter array items based on search criteria (query)
  */
-var filtered = [`aja`, 2, 3, 4].filter(
-    function(e) {
-      return this.indexOf(e) < 0;
-    },
-    [`aja`, 4 , 3]
-);
-console.log(filtered);
+// var filtered = [`aja`, 2, 3, 4].filter(
+//     function(e) {
+//       return this.indexOf(e) < 0;
+//     },
+//     [`aja`, 4 , 3]
+// );
+// console.log(filtered);
+
+userN.forEach(element => {
+    
+});
