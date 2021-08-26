@@ -43,6 +43,11 @@
 // );
 // console.log(filtered);
 
-userN.forEach(element => {
+// userN.forEach(element => {
     
-});
+// });
+    // <% if (alert) { %>
+    //     <div class="alert alert-danger" role="alert">
+    //         <%= alert %>
+    //     </div>
+    //     <% } %>
