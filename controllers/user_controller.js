@@ -1,5 +1,6 @@
 const { User }=require('../models')
 const { checkPassword } =require('../helpers/bycript')
+const checkIsLogin =require('../middleware/checkIsLogin')
 
 class UserController {
     static getUserRegister(req, res) {
