@@ -1,8 +1,8 @@
 const {Feed , User , Tag , FeedTag  } = require(`../models`)
 class Controller{
     static home (req, res) {
-    res.send('Hello World!')
-    // res.render(`home`)
+    // res.send('Hello World!')
+    res.render(`home`)
     
 
     }
