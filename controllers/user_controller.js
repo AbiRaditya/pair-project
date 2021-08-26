@@ -3,7 +3,7 @@ const { checkPassword } =require('../helpers/bycript')
 
 class UserController {
     static getUserRegister(req, res) {
-        res.render('register' , {title:`Register`})
+        res.render('register' , {alert: req.query.alert, title:`Register`})
     }
 
     static postUserRegister(req, res) {
@@ -17,7 +17,7 @@ class UserController {
             username: username
         })
         .then(()=> {
-            res.redirect('/users')
+            res.redirect('/users/login')
         })
         .catch(err => {
             res.send(err)
@@ -25,7 +25,7 @@ class UserController {
     }
 
     static getUserlogIn(req, res) {
-        res.render('login' ,  {title:`Login`})
+        res.render('login' ,  {alert: req.query.alert, itle:`Login`})
     }
     static postUserLogIn(req, res) {
         let {password, username} = req.body
@@ -41,7 +41,7 @@ class UserController {
                     req.session.isLogin = true
                     req.session.username = user.username
                     req.session.userId = user.id
-                    req.redirect(`/users`)
+                    req.redirect(`/`)
                 } else {
                     res.redirect('/users/register?alert=wrong username or password')
                 }
