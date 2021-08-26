@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   FeedTag.init({
-    FeedID: DataTypes.INTEGER
+    feedID: DataTypes.INTEGER,
+    tagID: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'FeedTag',

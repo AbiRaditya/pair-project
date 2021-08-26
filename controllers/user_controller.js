@@ -3,7 +3,7 @@ const { checkPassword } =require('../helpers/bycript')
 
 class UserController {
     static getUserRegister(req, res) {
-        res.render('register')
+        res.render('register' , {title:`Register`})
     }
 
     static postUserRegister(req, res) {
@@ -25,7 +25,7 @@ class UserController {
     }
 
     static getUserlogIn(req, res) {
-        res.render('login')
+        res.render('login' ,  {title:`Login`})
     }
     static postUserLogIn(req, res) {
         let {password, email} = req.body
