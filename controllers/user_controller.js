@@ -28,10 +28,10 @@ class UserController {
         res.render('login')
     }
     static postUserLogIn(req, res) {
-        let {password, email} = req.body
+        let {password, username} = req.body
         User.findOne({
             where: {
-                email: email
+                username: username
             }
         })
         .then(user => {
@@ -43,19 +43,23 @@ class UserController {
                     res.session.userId = user.id
                     res.redirect(`/user`)
                 } else {
-                    throw `wrong email or password`
+                    res.redirect('/user/register?alert=wrong username or password')
                 }
             }
             else {
-                throw `email is not registerd`
+                res.redirect(`/user/register?alert= username has been taken`)
             }
         })
         .catch(err => res.send(err))
     }
 
     static getUserLogOut() {
-        res.session.destroy()
-        res.redirect('/user/login')
+        res.session.destroy(err => {
+            if(err){
+                res.send(err);
+            } else {
+                res.redirect('/?alert=Successfully logged out');
+        }})
     }
 }
 
