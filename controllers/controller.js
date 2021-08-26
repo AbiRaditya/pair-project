@@ -22,5 +22,9 @@ class Controller{
             res.send(err)
         })
     }
+    static postFeed(req,res) {
+        // res.send(req.body)
+        console.log(req.body);
+    }
 }
 module.exports = Controller
