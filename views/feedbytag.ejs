@@ -1,0 +1,23 @@
+<%- include(`partials/header`) %>
+
+    <div class="box">
+        <% feedByTags[0].Feeds.forEach(e=> { %>
+            <div id="feeduser">
+                <%= console.log(userN) %>
+                    <% userN.forEach(element=> { %>
+                        <p>
+                            <%= (e.user_id===element.user_id) ? element.username : "" %>
+                        </p>
+                        <% }); %>
+                            <p class="para">
+                                <%= e.title %>
+                            </p>
+                            <p>
+                                <%= e.content %>
+                            </p>
+            </div>
+
+            <% }); %>
+    </div>
+
+    <%- include(`partials/footer`) %>
