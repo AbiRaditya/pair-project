@@ -2,7 +2,6 @@ const user_router = require('express').Router()
 const { Router } = require('express');
 const userController =require('../controllers/user_controller');
 const checkIsLogin = require('../middleware/checkIsLogin');
-const user = require('../models/user');
 
 user_router.get('/register', userController.getUserRegister)
 user_router.post('/register', userController.postUserRegister)

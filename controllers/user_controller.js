@@ -25,7 +25,7 @@ class UserController {
     }
 
     static getUserlogIn(req, res) {
-        res.render('login' ,  {alert: req.query.alert, itle:`Login`})
+        res.render('login' ,  {alert: req.query.alert, title:`Login`})
     }
     static postUserLogIn(req, res) {
         let {password, username} = req.body
