@@ -8,7 +8,7 @@ const user_router =require('./user')
 
 home_router.get('/', Controller.home)
 home_router.use(`/`, feeds_router)
-home_router.use('/user', user_router)
+home_router.use('/users', user_router)
 
 
 module.exports = home_router

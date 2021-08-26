@@ -17,7 +17,7 @@ class UserController {
             username: username
         })
         .then(()=> {
-            res.redirect('/user')
+            res.redirect('/users')
         })
         .catch(err => {
             res.send(err)
@@ -28,34 +28,38 @@ class UserController {
         res.render('login' ,  {title:`Login`})
     }
     static postUserLogIn(req, res) {
-        let {password, email} = req.body
+        let {password, username} = req.body
         User.findOne({
             where: {
-                email: email
+                username: username
             }
         })
         .then(user => {
             if(user) {
                 let comparePass = checkPassword(password, user.password)
                 if(comparePass) {
-                    res.session.isLogin = true
-                    res.session.email = user.email
-                    res.session.userId = user.id
-                    res.redirect(`/user`)
+                    req.session.isLogin = true
+                    req.session.username = user.username
+                    req.session.userId = user.id
+                    req.redirect(`/users`)
                 } else {
-                    throw `wrong email or password`
+                    res.redirect('/users/register?alert=wrong username or password')
                 }
             }
             else {
-                throw `email is not registerd`
+                res.redirect(`/users/register?alert= username has been taken`)
             }
         })
         .catch(err => res.send(err))
     }
 
     static getUserLogOut() {
-        res.session.destroy()
-        res.redirect('/user/login')
+        req.session.destroy(err => {
+            if(err){
+                res.send(err);
+            } else {
+                res.redirect('/?alert=Successfully logged out');
+        }})
     }
 }
 
