@@ -1,7 +1,9 @@
 const { User }=require('../models')
+const { checkPassword } =require('../helpers/bycript')
+
 class UserController {
     static getUserRegister(req, res) {
-        res.render('users/register')
+        res.render('register')
     }
 
     static postUserRegister(req, res) {
@@ -21,8 +23,12 @@ class UserController {
             res.send(err)
         })
     }
-    static getUserLogin(req, res) {
-        let {password, email}
+
+    static getUserlogIn(req, res) {
+        res.render('login')
+    }
+    static postUserLogIn(req, res) {
+        let {password, email} = req.body
         User.findOne({
             where: {
                 email: email
@@ -33,6 +39,9 @@ class UserController {
                 let comparePass = checkPassword(password, user.password)
                 if(comparePass) {
                     res.session.isLogin = true
+                    res.session.email = user.email
+                    res.session.userId = user.id
+                    res.redirect(`/user`)
                 } else {
                     throw `wrong email or password`
                 }
@@ -42,6 +51,11 @@ class UserController {
             }
         })
         .catch(err => res.send(err))
+    }
+
+    static getUserLogOut() {
+        res.session.destroy()
+        res.redirect('/user/login')
     }
 }
 

@@ -5,3 +5,5 @@ function checkIsLogin(req, res, next) {
         next()
     } 
 }
+
+module.exports = checkIsLogin;
