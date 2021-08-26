@@ -16,7 +16,7 @@ class Controller{
     })
         .then(data => {
             // res.send(data)
-            res.render(`feeds` , {data})
+            res.render(`feeds` , {data , title:`Feeds`})
         })
         .catch(err => {
             res.send(err)
@@ -25,6 +25,7 @@ class Controller{
     static postFeed(req,res) {
         // res.send(req.body)
         // console.log(req.body);
+        // 
         let newFeed = {
             user_id: req.body.id,
             title: req.body.title,

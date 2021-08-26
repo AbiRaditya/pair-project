@@ -3,6 +3,8 @@
 }
 .box{
     border: 2px solid black;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 .para{
     color: rgb(42, 65, 165);
