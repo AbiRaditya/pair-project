@@ -1,6 +1,7 @@
 const {Feed , User , Tag , FeedTag  } = require(`../models`)
 class Controller{
     static home (req, res) {
+
     // res.send('Hello World!')
     res.render(`home`)
     
@@ -21,6 +22,7 @@ class Controller{
         .catch(err => {
             res.send(err)
         })
+
     }
     static postFeed(req,res) {
         // res.send(req.body)
