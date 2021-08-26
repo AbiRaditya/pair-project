@@ -32,7 +32,7 @@ module.exports = {
      */
     return queryInterface.removeColumn(
       'Feeds', // name of Source model
-      'CategoryId' // key we want to remove
+      'user_id' // key we want to remove
     );
   }
 };

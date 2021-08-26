@@ -1,22 +1,27 @@
 [
     {
         "title": "my First post",
-        "content": "and this is the Content"
+        "content": "and this is the Content",
+        "user_id": 2
     },
     {
         "title": "my second post",
-        "content": "and this is the Content"
+        "content": "and this is the Content",
+        "user_id":1
     },
     {
         "title": "my third post",
-        "content": "and this is the Content"
+        "content": "and this is the Content",
+        "user_id":2
     },
     {
         "title": "my fourth post",
-        "content": "and this is the Content"
+        "content": "and this is the Content",
+        "user_id":3
     },
     {
         "title": "my fifth post",
-        "content": "and this is the Content"
+        "content": "and this is the Content",
+        "user_id":1
     }
 ]
