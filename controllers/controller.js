@@ -5,6 +5,7 @@ class Controller{
     res.render(`home`, {title:`Home`})
     }
     static getFeed(req,res){
+        console.log(req.session);
         User.findAll({
         include: [
             {
@@ -21,6 +22,7 @@ class Controller{
 
     }
     static postFeed(req,res) {
+        
         let searchTag = req.body.content.split(` `)
         let foundTag = []
         let tempTag = []
