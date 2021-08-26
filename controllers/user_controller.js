@@ -29,37 +29,43 @@ class UserController {
     }
     static postUserLogIn(req, res) {
         let {password, username} = req.body
-        User.findOne({
+        User.findAll({
             where: {
                 username: username
             }
         })
         .then(user => {
             if(user) {
-                let comparePass = checkPassword(password, user.password)
+                let comparePass = checkPassword(password, user[0].password)
                 if(comparePass) {
                     req.session.isLogin = true
-                    req.session.username = user.username
-                    req.session.userId = user.id
-                    req.redirect(`/users`)
+                    req.session.username = user[0].username
+                    req.session.userId = user[0].id
+                    res.redirect(`/feeds`)
                 } else {
-                    res.redirect('/users/register?alert=wrong username or password')
+                    res.redirect('/users/login?alert=wrong username or password')
                 }
             }
             else {
-                res.redirect(`/users/register?alert= username has been taken`)
+                res.redirect(`/users/login?alert= username has been taken`)
             }
         })
-        .catch(err => res.send(err))
+        .catch(err =>{
+            console.log(err,`<<<<<<<<<`);
+             res.send(err)
+        })
     }
 
-    static getUserLogOut() {
-        req.session.destroy(err => {
-            if(err){
-                res.send(err);
-            } else {
-                res.redirect('/?alert=Successfully logged out');
-        }})
+    static getUserLogOut(req,res) {
+        // req.session.destroy(err => {
+        //     if(err){
+        //         res.send(err);
+        //     } else {
+        //         res.redirect('/?alert=Successfully logged out');
+        // }})
+        req.session.destroy()
+        res.redirect(`/users/login`)
+        // console.log(req.session);
     }
 }
 
