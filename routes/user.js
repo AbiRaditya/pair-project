@@ -1,7 +1,6 @@
 const user_router = require('express').Router()
 const userController =require('../controllers/user_controller');
 const checkIsLogin = require('../middleware/checkIsLogin');
-const user = require('../models/user');
 
 
 user_router.get('/register', userController.getUserRegister)
