@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPassword } =require('../helpers/bycript')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -23,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     last_name: DataTypes.STRING,
     email: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate(instance) {
+        instance.password = hashPassword(instance.password)
+      }
+    },
     sequelize,
     modelName: 'User',
   });
