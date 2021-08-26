@@ -2,7 +2,6 @@ const {Feed , User , Tag , FeedTag  } = require(`../models`)
 class Controller{
     static home (req, res) {
 
-    // res.send('Hello World!')
     res.render(`home`, {title:`Home`})
     }
     static getFeed(req,res){
@@ -14,7 +13,6 @@ class Controller{
         ]
     })
         .then(data => {
-            // res.send(data)
             res.render(`feeds` , {data , title:`Feeds`})
         })
         .catch(err => {
@@ -23,11 +21,7 @@ class Controller{
 
     }
     static postFeed(req,res) {
-        // res.send(req.body)
-        // console.log(req.body);
-        // 
         let searchTag = req.body.content.split(` `)
-        // console.log(req.body.content.split(` `));
         let foundTag = []
         let tempTag = []
         let newTag = []
@@ -71,18 +65,13 @@ class Controller{
                     tagId.push(element.id)
                     tempTag.push(element.name)
                 });
-                // res.send(data)
-                // console.log(data);
-                // console.log(foundTag);
                 const filtered = foundTag.filter(
                     function(e) {
                     return this.indexOf(e) < 0;
                     },
                     tempTag
                 );
-                // res.send(filtered)
                 newTag = filtered
-                // console.log(newTag);
                 return Feed.findAll({
                     where: {
                         createdAt: newFeed.createdAt
@@ -90,10 +79,8 @@ class Controller{
                 })
             })
             .then(data => {
-                // res.send(data)
                 feedId = data[0].id
                 if (newTag.length > 0){
-                    // Tag.bulkCreate
                     newTag.forEach(e => {
                         objTag.push({name: e})
                     });
