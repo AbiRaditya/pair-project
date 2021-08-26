@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Feed.belongsToMany(models.User , {through:`FeedUser`,foreignKey: `feedID`})
+      Feed.belongsTo(models.User , {foreignKey: `user_id`})
     }
   };
   Feed.init({
