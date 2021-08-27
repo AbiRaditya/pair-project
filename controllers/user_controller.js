@@ -1,5 +1,6 @@
 const { User }=require('../models')
 const { checkPassword } =require('../helpers/bycript')
+const {checkIslogin} =require('../middleware/checkIsLogin')
 
 class UserController {
     static getUserRegister(req, res) {
@@ -29,20 +30,27 @@ class UserController {
     }
     static postUserLogIn(req, res) {
         let {password, username} = req.body
-        User.findAll({
+        User.findOne({
             where: {
                 username: username
             }
         })
         .then(user => {
             if(user) {
-                console.log(user);
-                let comparePass = checkPassword(password, user[0].password)
+                let comparePass = checkPassword(password, user.password)
                 if(comparePass) {
                     req.session.isLogin = true
-                    req.session.username = user[0].username
-                    req.session.userId = user[0].id
+                    req.session.username = user.username
+                    req.session.password = user.password
+                    req.session.userId = user.id
                     res.redirect(`/feeds`)
+                // let comparePass = checkPassword(password, user[0].password)
+                // if(comparePass) {
+                //     req.session.isLogin = true
+                //     req.session.username = user[0].username
+                //     req.session.password = user[0].password
+                //     req.session.userId = user[0].id
+                //     res.redirect(`/feeds`)
                 } else {
                     res.redirect('/users/login?alert=wrong username or password')
                 }
