@@ -1,9 +1,10 @@
 const { User }=require('../models')
 const { checkPassword } =require('../helpers/bycript')
+const {checkIslogin} =require('../middleware/checkIsLogin')
 
 class UserController {
     static getUserRegister(req, res) {
-        res.render('register' , {title:`Register`})
+        res.render('register' , {alert: req.query.alert, title:`Register`})
     }
 
     static postUserRegister(req, res) {
@@ -17,7 +18,7 @@ class UserController {
             username: username
         })
         .then(()=> {
-            res.redirect('/user')
+            res.redirect('/users/login')
         })
         .catch(err => {
             res.send(err)
@@ -25,37 +26,55 @@ class UserController {
     }
 
     static getUserlogIn(req, res) {
-        res.render('login' ,  {title:`Login`})
+        res.render('login' ,  {alert: req.query.alert, title:`Login`})
     }
     static postUserLogIn(req, res) {
-        let {password, email} = req.body
+        let {password, username} = req.body
         User.findOne({
             where: {
-                email: email
+                username: username
             }
         })
         .then(user => {
             if(user) {
                 let comparePass = checkPassword(password, user.password)
                 if(comparePass) {
-                    res.session.isLogin = true
-                    res.session.email = user.email
-                    res.session.userId = user.id
-                    res.redirect(`/user`)
+                    req.session.isLogin = true
+                    req.session.username = user.username
+                    req.session.password = user.password
+                    req.session.userId = user.id
+                    res.redirect(`/feeds`)
+                // let comparePass = checkPassword(password, user[0].password)
+                // if(comparePass) {
+                //     req.session.isLogin = true
+                //     req.session.username = user[0].username
+                //     req.session.password = user[0].password
+                //     req.session.userId = user[0].id
+                //     res.redirect(`/feeds`)
                 } else {
-                    throw `wrong email or password`
+                    res.redirect('/users/login?alert=wrong username or password')
                 }
             }
             else {
-                throw `email is not registerd`
+                res.redirect(`/users/login?alert= username has been taken`)
             }
         })
-        .catch(err => res.send(err))
+        .catch(err =>{
+            console.log(err,`<<<<<<<<<`);
+             res.send(err)
+        })
     }
 
-    static getUserLogOut() {
-        res.session.destroy()
-        res.redirect('/user/login')
+    static getUserLogOut(req,res) {
+        // req.session.destroy(err => {
+        //     if(err){
+        //         res.send(err);
+        //     } else {
+        //         res.redirect('/?alert=Successfully logged out');
+        // }})
+        req.session.destroy()
+        res.redirect(`/users/login`)
+        // console.log(req.session);
     }
 }
 

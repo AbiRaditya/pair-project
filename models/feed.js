@@ -17,12 +17,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Feed.belongsTo(models.User , {foreignKey: `user_id`})
-      Feed.belongsToMany(models.Tag , {through: `FeedTag` , foreignKey: `feedID`})
+      Feed.belongsToMany(models.Tag , { through: `FeedTags` , foreignKey: `feedID` })
     }
   };
   Feed.init({
     title: DataTypes.STRING,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    user_id: {type:DataTypes.INTEGER ,
+        validate: {
+          notEmpty:{
+            msg:`No User Logged In`
+          }
+        }
+    }
   }, {
     hooks:{
       beforeCreate: (instance, options) => {
