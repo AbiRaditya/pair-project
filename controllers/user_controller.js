@@ -1,5 +1,6 @@
 const { User }=require('../models')
 const { checkPassword } =require('../helpers/bycript')
+const {checkIslogin} =require('../middleware/checkIsLogin')
 
 class UserController {
     static getUserRegister(req, res) {
@@ -40,6 +41,7 @@ class UserController {
                 if(comparePass) {
                     req.session.isLogin = true
                     req.session.username = user[0].username
+                    req.session.password = user[0].password
                     req.session.userId = user[0].id
                     res.redirect(`/feeds`)
                 } else {
