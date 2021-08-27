@@ -51,3 +51,20 @@
     //         <%= alert %>
     //     </div>
     //     <% } %>
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        
+    }
+
+    // <% element.Feeds.forEach(e=> { %>
+    //             <div>
+
+    //                 <p class="para">
+    //                     <%= e.title %>
+    //                 </p>
+    //                 <p>
+    //                     <%= e.content %>
+    //                 </p>
+    //             </div>
+
+    //             <% }); %>

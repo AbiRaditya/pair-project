@@ -5,7 +5,7 @@ class Controller{
     res.render(`home`, {title:`Home`})
     }
     static getFeed(req,res){
-        console.log(req.session);
+        // console.log(req.session , `<<<<< ini di controller`);
         User.findAll({
         include: [
             {
@@ -41,7 +41,7 @@ class Controller{
         // console.log(foundTag);
         let tagId = []
         let newFeed = {
-            user_id: req.body.id,
+            user_id: req.session.userId,
             title: req.body.title,
             content: req.body.content,
             createdAt: new Date(),
@@ -86,7 +86,6 @@ class Controller{
                     newTag.forEach(e => {
                         objTag.push({name: e})
                     });
-                    console.log(objTag,`<<<<<<<<<<<<<<<<<<<<< INI`);
                     return Tag.bulkCreate(objTag)
                 }else{
                     flag = true
@@ -98,7 +97,6 @@ class Controller{
                             tagID: el
                         })
                     });
-                    console.log(objFT);
                     return FeedTag.bulkCreate(objFT)
                 }
             })
@@ -111,7 +109,6 @@ class Controller{
         
                         }})
                 }else{
-                    console.log(`line 125`);
                     res.redirect(`/feeds`)
                 }
             })
@@ -119,12 +116,12 @@ class Controller{
                 data.forEach(el => {
                     allTagId.push(el)
                 });
-                allTagId.forEach(el => {
+                allTagId.forEach(ele => {
                         objFT2.push({
                             createdAt:new Date() ,
                             updatedAt:new Date(),
                             feedID: feedId,
-                            tagID: el
+                            tagID: ele.id
                         })
                     });
                     return FeedTag.bulkCreate(objFT2)
