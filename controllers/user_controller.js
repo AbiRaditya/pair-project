@@ -36,6 +36,7 @@ class UserController {
         })
         .then(user => {
             if(user) {
+                console.log(user);
                 let comparePass = checkPassword(password, user[0].password)
                 if(comparePass) {
                     req.session.isLogin = true

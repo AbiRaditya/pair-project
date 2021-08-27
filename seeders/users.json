@@ -1,7 +1,7 @@
 [
     {
         "profile_picture": "avatar-link",
-        "username": "test-username1",
+        "username": "YOO MAN",
         "password": "testing-Password",
         "first_name": "test1 first",
         "last_name": "test1 last",
@@ -9,7 +9,7 @@
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username2",
+        "username": "EDGE BOY",
         "password": "testing-Password",
         "first_name": "test2 first",
         "last_name": "test2 last",
@@ -17,7 +17,7 @@
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username3",
+        "username": "Always Sad",
         "password": "testing-Password",
         "first_name": "test3 first",
         "last_name": "test3 last",
@@ -25,7 +25,7 @@
     },
     {
         "profile_picture": "avatar-link",
-        "username": "test-username4",
+        "username": "this is",
         "password": "testing-Password",
         "first_name": "test4 first",
         "last_name": "test4 last",

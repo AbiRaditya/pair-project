@@ -22,7 +22,14 @@ module.exports = (sequelize, DataTypes) => {
   };
   Feed.init({
     title: DataTypes.STRING,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    user_id: {type:DataTypes.INTEGER ,
+        validate: {
+          notEmpty:{
+            msg:`No User Logged In`
+          }
+        }
+    }
   }, {
     hooks:{
       beforeCreate: (instance, options) => {
