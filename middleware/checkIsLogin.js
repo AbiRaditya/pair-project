@@ -4,7 +4,7 @@ function checkIsLogin(req, res, next) {
         next()
     } else  {
         res.redirect('/users/login')
-        console.log(req.session.isLogin,`<<<2<<<3<<<<<<<<<<`);
+        console.log(req.session.isLogin,`<<<2<<<3<<<<<<<<<< INI DARI MIDDLEWARE`);
     } 
 }
 
